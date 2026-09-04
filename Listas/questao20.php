@@ -11,53 +11,54 @@ $votos = [10, 20, 10, 30, 30, 30, 20, 10, 50, 30, 20, 30, 50, 10];
 $votosNulos = 0;
 $votosValidos = 0;
 
+// Conta os votos
 foreach ($votos as $voto) {
 
     $encontrou = false;
 
-    foreach ($candidatos as &$candidato) {
+    for ($i = 0; $i < count($candidatos); $i++) {
 
-        if ($voto == $candidato["numero"]) {
-            $candidato["votos"]++;
+        if ($voto == $candidatos[$i]["numero"]) {
+
+            $candidatos[$i]["votos"]++;
             $votosValidos++;
             $encontrou = true;
-            break;
         }
-
     }
 
-    unset($candidato);
-
-    if (!$encontrou) {
+    if ($encontrou == false) {
         $votosNulos++;
     }
 }
 
-$maiorVotos = -1;
+// Descobre o vencedor
+$maiorVotos = 0;
 $vencedor = "";
 
-echo "<strong>Resultado da eleição:</strong><br><br>";
+foreach ($candidatos as $candidato) {
 
+    if ($candidato["votos"] > $maiorVotos) {
+
+        $maiorVotos = $candidato["votos"];
+        $vencedor = $candidato["nome"];
+    }
+}
+
+// Exibe os resultados
 foreach ($candidatos as $candidato) {
 
     $percentual = ($candidato["votos"] / $votosValidos) * 100;
 
     echo $candidato["nome"] . ": ";
     echo $candidato["votos"] . " votos - ";
-    echo number_format($percentual, 2, ",", ".") . "%<br>";
-
-    if ($candidato["votos"] > $maiorVotos) {
-        $maiorVotos = $candidato["votos"];
-        $vencedor = $candidato["nome"];
-    }
+    echo $percentual . "%<br>";
 }
 
-$totalVotos = count($votos);
-
 echo "<br>";
+
 echo "Votos nulos: $votosNulos<br>";
 echo "Votos válidos: $votosValidos<br>";
-echo "Total de votos: $totalVotos<br>";
+echo "Total de votos: " . count($votos) . "<br>";
 echo "Vencedor: $vencedor";
 
 ?>

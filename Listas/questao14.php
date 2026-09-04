@@ -2,22 +2,36 @@
 
 $numeros = [2, 5, 2, 8, 5, 2, 10, 8, 5, 5];
 
-$frequencias = [];
+for ($i = 0; $i < count($numeros); $i++) {
 
-foreach ($numeros as $numero) {
+    $valor = $numeros[$i];
+    $repetido = false;
 
-    if (isset($frequencias[$numero])) {
-        $frequencias[$numero]++;
-    } else {
-        $frequencias[$numero] = 1;
+    // Verifica se o valor já apareceu antes
+    for ($j = 0; $j < $i; $j++) {
+
+        if ($numeros[$j] == $valor) {
+            $repetido = true;
+        }
+
     }
 
-}
+    // Se ainda não apareceu, conta suas ocorrências
+    if ($repetido == false) {
 
-foreach ($frequencias as $numero => $quantidade) {
+        $quantidade = 0;
 
-    echo "$numero aparece $quantidade vezes<br>";
+        for ($j = 0; $j < count($numeros); $j++) {
 
+            if ($numeros[$j] == $valor) {
+                $quantidade++;
+            }
+
+        }
+
+        echo "$valor aparece $quantidade vezes<br>";
+    }
 }
 
 ?>
+```
