@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/app/controller/controller.php'; 
 $controller = new tarefaController(); 
-$action = $_GET['action'] ?? 'index'; 
+$action = $_GET['action'] ?? 'index';
 switch ($action){
     case 'criar': 
         $controller->criar(); 
@@ -9,8 +9,8 @@ switch ($action){
     case 'excluir': 
         $controller->excluir(); 
         break; 
-    case 'editar': 
-        $controller->editar(); 
+    case 'editar':
+        $controller->editar();
         break;
     default:
         $controller->index(); 

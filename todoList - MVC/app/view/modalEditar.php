@@ -6,9 +6,9 @@
 
         <form action="index.php?action=editar" method="POST">
 
-            <input type="hidden" name="id" id="editarId">
+            <input type="hidden" name="id" id="valorId">
 
-            <input type="text" name="descricao" id="editarDescricao">
+            <input type="text" name="descricao" id="editarDescricao" >
 
             <button type="submit"> Salvar </button>
 

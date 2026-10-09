@@ -43,14 +43,13 @@ class Tarefa{
     }
 
     # Editar
+
     public function editar($descricao, $id){
-        $descricao = $this->conn->real_escape_string($descricao);
         $id = intval($id);
-        $sql = "UPDATE tarefas SET descricao = '$descricao' WHERE id = '$id'";
+        $descricao = $this->conn->real_escape_string($descricao);
+        $sql = "UPDATE tarefas SET descricao = '$descricao' WHERE id = '0'"; 
         return $this->conn->query($sql); 
     }
-    
-
 }
 
 ?>
