@@ -44,7 +44,7 @@
             <?php foreach ($tarefas as $tarefa): ?>
                 <li>
                     <?php echo ($tarefa['descricao']); ?>
-                    <a href="index.php?action=excluir&id=<?php echo $tarefas[0]['id']; ?>">
+                    <a href="index.php?action=excluir&id=<?php echo $tarefaS[0]['id']; ?>">
                         Excluir
                     </a>
                     <button
@@ -63,8 +63,8 @@
     <script>
         function abrirModal(id, descricao){
             document.getElementById("modalEditar").style.display = "block"
-            document.getElementById("valorId").value = id
-            document.getElementById("editarDescricao").value = descricao
+            document.getElementById("valorId").value = descricao 
+            document.getElementById("editarDescricao").value = id
         }
 
         function fecharModal(){

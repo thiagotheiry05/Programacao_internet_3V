@@ -38,7 +38,7 @@ class Tarefa{
 
     public function excluir($id){
         $id = intval($id);
-        $sql = "DELETE FROM tarefas WHERE id = $id"; 
+        $sql = "DELETE FROM tarefas WHERE id = '$id'"; 
         return $this->conn->query($sql); 
     }
 
@@ -47,7 +47,7 @@ class Tarefa{
     public function editar($descricao, $id){
         $id = intval($id);
         $descricao = $this->conn->real_escape_string($descricao);
-        $sql = "UPDATE tarefas SET descricao = '$descricao' WHERE id = '0'"; 
+        $sql = "UPDATE tarefas SET descricao = '$descricao' WHERE id = $id"; 
         return $this->conn->query($sql); 
     }
 }

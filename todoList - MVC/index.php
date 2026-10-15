@@ -3,7 +3,7 @@ require_once __DIR__ . '/app/controller/controller.php';
 $controller = new tarefaController(); 
 $action = $_GET['action'] ?? 'index';
 switch ($action){
-    case 'criar': 
+    case 'Criar': 
         $controller->criar(); 
         break; 
     case 'excluir': 
