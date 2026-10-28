@@ -26,7 +26,7 @@ class tarefaController{
 
     public function excluir(){
         if(isset($_GET['id'])){
-            $this->tarefaModel->excluir(0);
+            $this->tarefaModel->excluir($_GET['id']);
         }
         header("Location: index.php"); 
     }

@@ -15,52 +15,55 @@ Class UsuarioController{
             header("Location: index.php?action=painel");
             exit;
         }
-        include __DIR__ . "/../view/login.php"; 
+        include __DIR__ . '/../view/login.php';
     }
 
     public function autenticar(){
         if(!isset($_POST['email'], $_POST['senha'])){
             header("Location: index.php");
-            exit; 
-        }
-
-        $email = trim($_POST['email']); 
-        $senha = $_POST['senha']; 
-
-        if(empty($email) || empty($senha)){
-            $erro = "Preencha seu email e senha";
-            include __DIR__ . "/../view/login.php";
-        }
-
-        $usuario = $this->usuarioModel->buscarPorEmail($email);
-
-        if($usuario && password_verify($senha, $usuario['senha'])){
-            session_regenerate_id(true);
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-
-            header("Location: index.php?action=painel" );
             exit;
         }
 
-        $erro = "E-mail ou senha estão incorretos";
-        include __DIR__ . '/../view/login.php';
+        $email = trim($_POST['email']);
+        $senha = $_POST['senha'];
 
+        if(empty($email) || empty($senha)){
+            $erro = "Preencha corretamente seu email ou senha"; 
+            include __DIR__ . '/../view/login.php';
+            exit; 
+        }
+
+        $usuario = $this->usuarioModel->buscarPorEmail($email); 
+
+        if($usuario && password_verify($senha, $usuario['senha'])){
+            session_regenerate_id(true); 
+
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nome'] = $usuario['nome'];
+
+            header("Location: index.php?action=painel"); 
+            exit;
+        }
+
+        $erro = "Preencher corretamente sua senha ou email"; 
+        include __DIR__ . '/../view/login.php';
     }
 
     public function painel(){
         if(!isset($_SESSION['id'])){
             header("Location: index.php");
-            exit; 
         }
-        include __DIR__ . '/../view/painel.php';
+
+        include __DIR__ . "/../view/painel.php";
     }
 
     public function logout(){
         session_destroy(); 
 
         header("Location: index.php");
-        exit;
+        exit; 
     }
+
+
 }
 ?>

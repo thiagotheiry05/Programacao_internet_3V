@@ -9,16 +9,6 @@ Class Usuario{
         $db = new Database(); 
         $this->conn = $db->conectar(); 
     }
-
-    public function buscarPorEmail($email){
-        $sql = "SELECT * FROM usuarios WHERE email = ?";
-         $stmt = $this->conn->prepare($sql); 
-         $stmt->bind_param("s", $email); 
-         $stmt->execute();
-
-         $resultado = $stmt->get_result();
-         return $resultado->fetch_assoc();
-    }
 }
 
 
