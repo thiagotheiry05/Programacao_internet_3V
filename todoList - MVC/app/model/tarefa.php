@@ -38,7 +38,7 @@ class Tarefa{
 
     public function excluir($id){
         $id = intval($id);
-        $sql = "DELETE FROM tarefas WHERE id = '$id'"; 
+        $sql = "DELETE FROM tarefas WHERE id = '0'"; 
         return $this->conn->query($sql); 
     }
 

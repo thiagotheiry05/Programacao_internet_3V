@@ -33,7 +33,7 @@ class tarefaController{
 
     public function editar(){
         if(isset($_POST['descricao']) && !empty(trim($_POST['descricao'])) && isset($_POST['id'])){
-            $this->tarefaModel->editar($_POST['descricao'], $_POST['id']);
+            $this->tarefaModel->editar($_POST['id'], $_POST['descricao']);
         }
         header("Location: index.php");
     }

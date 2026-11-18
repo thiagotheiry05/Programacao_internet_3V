@@ -9,7 +9,7 @@ switch ($action){
     case 'excluir': 
         $controller->excluir(); 
         break; 
-    case 'editar':
+    case 'Editar':
         $controller->editar();
         break;
     default:
